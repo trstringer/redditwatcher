@@ -1,0 +1,6 @@
+colorama==0.3.7
+praw==4.3.0
+prawcore==0.7.0
+redditwatcher==0.1.0
+requests==2.12.5
+update-checker==0.16
