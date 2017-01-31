@@ -8,7 +8,7 @@ Listens to a stream reddit submissions
  2. `cd redditwatcher`
  3. `pip3 install .`
 
-:bulb: You must register a reddit app and then define `REDDITWATCHER_CLIENTID` and `REDDITWATCHER_CLIENTSECRET` environment variables to their appropriate values
+:bulb: You must [register a reddit app](https://www.reddit.com/prefs/apps/) and then define `REDDITWATCHER_CLIENTID` and `REDDITWATCHER_CLIENTSECRET` environment variables to their appropriate values
 
 ## Usage
 
