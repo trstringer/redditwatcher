@@ -27,12 +27,20 @@ def subreddits(args):
 
 
 def display_submission(submission):
-    print('{}/r/{} {}[{}] {}{} {}{}'.format(
+    created = datetime.fromtimestamp(submission.created_utc)
+    adjusted_hour = created.hour if created.hour <= 12 else created.hour - 12
+    if adjusted_hour == 0:
+        adjusted_hour = 12
+    adjusted_minute = str(created.minute).rjust(2, '0')
+
+    print('{}/r/{} {}[{}] {}{}\n    {}{}'.format(
         colorama.Fore.GREEN,
         submission.subreddit.display_name,
         colorama.Fore.BLUE,
-        '{d.month}/{d.day} {d.hour}:{d.minute:02} {d:%P}'.format(
-            d=datetime.fromtimestamp(submission.created_utc)
+        '{}/{} {}:{} {}'.format(
+            created.month, created.day,
+            adjusted_hour, adjusted_minute,
+            created.strftime('%P')
         ),
         colorama.Fore.YELLOW,
         submission.shortlink,
