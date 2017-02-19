@@ -1,6 +1,6 @@
 # RedditWatcher
 
-Listens to a stream reddit submissions
+Listens to a stream of reddit submissions
 
 ## Installation
 
