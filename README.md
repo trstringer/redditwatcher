@@ -2,6 +2,8 @@
 
 Listens to a stream of reddit submissions
 
+![screenshot](./screenshot.png)
+
 ## Installation
 
  1. `git clone https://github.com/tstringer/redditwatcher.git`
