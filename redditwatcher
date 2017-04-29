@@ -1,0 +1,4 @@
+#!/bin/bash
+
+. RWDIR/venv/bin/activate
+python RWDIR/app/app.py "$@"

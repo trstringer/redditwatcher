@@ -1,0 +1,12 @@
+#!/bin/bash
+
+SCRIPT_DIR=$(realpath $(dirname "$0"))
+
+sed 's|RWDIR|'$SCRIPT_DIR'|g' $SCRIPT_DIR/redditwatcher > ~/.local/bin/redditwatcher
+chmod 755 ~/.local/bin/redditwatcher
+
+cd $SCRIPT_DIR
+python3 -m venv venv
+. venv/bin/activate
+pip install -r requirements.txt
+deactivate
