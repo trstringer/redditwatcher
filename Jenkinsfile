@@ -6,10 +6,14 @@ pipeline {
   }
   stages {
     stage('Build') {
+      environment {
+        REDDITWATCHER_CLIENTID = credentials('REDDITWATCHER_CLIENTID')
+        REDDITWATCHER_CLIENTSECRET = credentials('REDDITWATCHER_CLIENTSECRET')
+      }
       steps {
         echo "building..."
         sh "docker build -t ${env.DOCKER_REPOSITORY}:${env.BUILD_VERSION} ."
-        sh "docker run --rm --env-file env --name rw ${env.DOCKER_REPOSITORY}:${env.BUILD_VERSION}"
+        sh "docker run --rm -e ${env.REDDITWATCHER_CLIENTID} -e ${env.REDDITWATCHER_CLIENTSECRET} --name rw ${env.DOCKER_REPOSITORY}:${env.BUILD_VERSION}"
       }
     }
     stage('Test') {
