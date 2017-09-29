@@ -1,0 +1,9 @@
+*.pyc
+screenshot.png
+.git/
+.gitignore
+install
+redditwatcher
+__pycache__/
+README.md
+env.sample

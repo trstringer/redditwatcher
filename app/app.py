@@ -33,18 +33,14 @@ def display_submission(submission):
         adjusted_hour = 12
     adjusted_minute = str(created.minute).rjust(2, '0')
 
-    print('{}/r/{} {}[{}] {}{}\n    {}{}'.format(
-        colorama.Fore.GREEN,
+    print('/r/{} [{}] {}\n  =====> {}\n'.format(
         submission.subreddit.display_name,
-        colorama.Fore.BLUE,
         '{}/{} {}:{} {}'.format(
             created.month, created.day,
             adjusted_hour, adjusted_minute,
             created.strftime('%P')
         ),
-        colorama.Fore.YELLOW,
         submission.shortlink,
-        colorama.Fore.RESET,
         submission.title
     ))
 
