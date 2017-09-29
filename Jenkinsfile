@@ -36,7 +36,7 @@ pipeline {
   }
   post {
     always {
-      sh "docker stop rw"
+      sh "docker stop rw || true"
       sh "docker image prune -f"
     }
     failure {
