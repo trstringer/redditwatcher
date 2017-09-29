@@ -33,7 +33,7 @@ def display_submission(submission):
         adjusted_hour = 12
     adjusted_minute = str(created.minute).rjust(2, '0')
 
-    print('/r/{} [{}] {}\n  =====> {}\n'.format(
+    print('/r/{} [{}] {}\n   ======> {}\n'.format(
         submission.subreddit.display_name,
         '{}/{} {}:{} {}'.format(
             created.month, created.day,
