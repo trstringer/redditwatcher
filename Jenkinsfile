@@ -13,12 +13,13 @@ pipeline {
       steps {
         echo "building..."
         sh "docker build -t ${env.DOCKER_REPOSITORY}:${env.BUILD_VERSION} ."
-        sh "docker run --rm -e REDDITWATCHER_CLIENTID=${env.REDDITWATCHER_CLIENTID} -e REDDITWATCHER_CLIENTSECRET=${env.REDDITWATCHER_CLIENTSECRET} --name rw ${env.DOCKER_REPOSITORY}:${env.BUILD_VERSION} linux"
+        sh "docker run -d --rm -e REDDITWATCHER_CLIENTID=${env.REDDITWATCHER_CLIENTID} -e REDDITWATCHER_CLIENTSECRET=${env.REDDITWATCHER_CLIENTSECRET} --name rw ${env.DOCKER_REPOSITORY}:${env.BUILD_VERSION} linux"
       }
     }
     stage('Test') {
       steps {
-        sh 'bash ./integration/integration_tests.sh'
+        sh 'sleep 2'
+        sh 'docker stop rw'
       }
     }
     stage('Deliver') {
