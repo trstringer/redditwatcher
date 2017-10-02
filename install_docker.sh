@@ -3,6 +3,7 @@
 setup() {
     REDDITWATCHER_DEF="
 redditwatcher() {
+    docker pull trstringer/redditwatcher:latest >> /dev/null
     docker run --rm \\
         -e REDDITWATCHER_CLIENTID=\$REDDITWATCHER_CLIENTID \\
         -e REDDITWATCHER_CLIENTSECRET=\$REDDITWATCHER_CLIENTSECRET \\
