@@ -20,7 +20,7 @@ pipeline {
       steps {
         sh "sleep 2"
         sh "docker logs rw"
-        sh "docker stop rw"
+        sh "docker ps | grep rw"
       }
     }
     stage('Deliver') {
