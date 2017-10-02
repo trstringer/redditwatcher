@@ -7,6 +7,10 @@ from version import VERSION
 
 def main():
 
+    if len(sys.argv) < 2:
+        print('You must specify a subreddit or multiple subreddits (or --version)')
+        sys.exit(1)
+
     if sys.argv[1] in ['--version', '-v']:
         print('redditwatcher v{}'.format(VERSION))
         sys.exit(0)
