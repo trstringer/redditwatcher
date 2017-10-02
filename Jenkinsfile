@@ -32,6 +32,7 @@ pipeline {
       steps {
         echo "pushing image to container registry..."
         sh "docker push ${env.DOCKER_REPOSITORY}:${env.BUILD_VERSION}"
+        sh "docker push ${env.DOCKER_REPOSITORY}:latest"
       }
     }
   }
