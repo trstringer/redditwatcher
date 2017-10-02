@@ -13,13 +13,14 @@ pipeline {
       steps {
         echo "building..."
         sh "docker build -t ${env.DOCKER_REPOSITORY}:${env.BUILD_VERSION} ."
-        sh "docker run -d --rm -e REDDITWATCHER_CLIENTID=${env.REDDITWATCHER_CLIENTID} -e REDDITWATCHER_CLIENTSECRET=${env.REDDITWATCHER_CLIENTSECRET} --name rw ${env.DOCKER_REPOSITORY}:${env.BUILD_VERSION} linux"
+        sh "docker run -d -e REDDITWATCHER_CLIENTID=${env.REDDITWATCHER_CLIENTID} -e REDDITWATCHER_CLIENTSECRET=${env.REDDITWATCHER_CLIENTSECRET} --name rw ${env.DOCKER_REPOSITORY}:${env.BUILD_VERSION} linux"
       }
     }
     stage('Test') {
       steps {
-        sh 'sleep 2'
-        sh 'docker stop rw'
+        sh "sleep 2"
+        sh "docker logs rw"
+        sh "docker stop rw"
       }
     }
     stage('Deliver') {
@@ -37,6 +38,7 @@ pipeline {
   post {
     always {
       sh "docker stop rw || true"
+      sh "docker rm rw || true"
       sh "docker image prune -f"
     }
     failure {
