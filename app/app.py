@@ -2,11 +2,14 @@ from datetime import datetime
 import sys
 import os
 import praw
-import colorama
+from version import VERSION
 
 
 def main():
-    colorama.init()
+
+    if sys.argv[1] in ['--version', '-v']:
+        print('redditwatcher v{}'.format(VERSION))
+        sys.exit(0)
 
     reddit = praw.Reddit(
         client_id=os.environ['REDDITWATCHER_CLIENTID'],

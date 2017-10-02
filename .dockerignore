@@ -2,7 +2,7 @@
 screenshot.png
 .git/
 .gitignore
-install
+install*
 redditwatcher
 __pycache__/
 README.md
