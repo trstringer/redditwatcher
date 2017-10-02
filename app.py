@@ -25,6 +25,7 @@ def main():
         for submission in (
                 reddit.subreddit(subreddits(sys.argv)).stream.submissions()):
             display_submission(submission)
+            sys.stdout.flush()
     except KeyboardInterrupt:
         pass
 
